@@ -1,0 +1,36 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios HTML</title>
+</head>
+
+<body>
+    <header>
+        <h1>
+            Exercícios HTML
+        </h1>
+    </header>
+    <nav>
+        <a href="exercicios/teste.html">00 - Teste</a>
+    </nav>
+    <br>
+    <section id="conteudo"></section>
+    <script>
+        const conteudo = document.querySelector('#conteudo');
+
+        document.querySelectorAll('a').forEach((link) => {
+            link.addEventListener("click", async (e) => {
+                e.preventDefault();
+
+                const href = e.target["href"];
+                conteudo.innerHTML =
+                    await (await fetch(href)).text();
+            });
+        })
+
+    </script>
+</body>
+
+</html>
